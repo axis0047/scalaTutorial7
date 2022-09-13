@@ -1,35 +1,28 @@
 object Question4 {
     def main (args: Array[String]):Unit = {
-        val bank1 = new Bank()
+        
+        val newbank = new Bank()
 
-        val account1 = new Account("12345", 50,10000)
-        val account2 = new Account("67890", 50, 30000)
-        val account3 = new Account("45632", 20, 40000)
-        val account4 = new Account("13243", 10, 25000)
+        val acc1 = new Account("990442037", 123, 20000)
+        val acc2 = new Account("990442038", 124, -10000)
+        val acc3 = new Account("990442039", 125, 30000)
+        val acc4 = new Account("990442030", 126, 50000)
 
-        bank1.addAcc(account1)
-        bank1.addAcc(account2)
-        bank1.addAcc(account3)
-        bank1.addAcc(account4)
+        newbank.addAcc(acc1)
+        newbank.addAcc(acc2)
+        newbank.addAcc(acc3)
+        newbank.addAcc(acc4)
 
-        account3.withdraw(40000)
-        account4.withdraw(30000)
-        account2.transfer(account1, 32000)
+        println("Negative Accounts :")
+        println(newbank.listOfNegativeAccounts)
 
-        // 4.1
-        println("Negative account balances are ") 
-        bank1.listOfNegativeAccounts
-        println()
+        println("Sum of All accounts :")
+        println(newbank.sumOfAllAccounts)
 
-        // 4.2
-        print("Sum of all balances is ") 
-        println(bank1.sumOfAllAccounts)
-        println()
+        newbank.interest
+        newbank.printAcc
 
-        //4.3
-        println("List of all balances after interest is ") 
-        bank1.interest
-        //bank1.listAccounts
+
     }
 }
 
@@ -68,5 +61,9 @@ class Bank {
 
     def addAcc(a:Account) = {
         bank = a :: bank 
+    }
+
+    def printAcc = {
+        bank.foreach(println)
     }
 }
